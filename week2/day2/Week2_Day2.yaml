@@ -1,0 +1,163 @@
+
+1. **Definition and Structure**:
+   - **Absolute XPath**: It starts from the root (`html`) and traverses down to the desired element, detailing every single element in the hierarchy. The path starts with a single forward slash `/`, indicating the root. For example: `/html/body/div[2]/div[2]/div/form/p[1]/input`.
+`.
+   - **Relative XPath**: It starts from anywhere within the document and typically focuses on identifying elements based on attributes, indexes, or specific tags, not necessarily detailing the entire path from the root. It starts with a double forward slash `//`, indicating the search can begin anywhere. 
+   For example: `//input[@id=‘username’]`.
+
+2. **Robustness**:
+   - **Absolute XPath**: It is less robust because if there are any changes in the path or structure of the web page, the XPath would break, leading to failed element location.
+   - **Relative XPath**: It is more robust as it usually focuses on specific attributes or elements, making it less susceptible to changes in the overall structure of the webpage.
+
+3. **Length and Complexity**:
+   - **Absolute XPath**: These tend to be longer . They map the entire path from the root to the element, making them more complex.
+   - **Relative XPath**: They are generally shorter and more concise, targeting specific elements directly without detailing the entire path, reducing complexity.
+
+4. **Flexibility and Use Cases**:
+   - **Absolute XPath**: It's less commonly used in dynamic web environments where page structures can change frequently.
+   - **Relative XPath**: More commonly used in web automation and scraping because of its adaptability to web page changes and ability to precisely target elements.
+
+5. **Performance**:
+   - **Absolute XPath**: It can be slower in performance as it requires traversing the entire hierarchy of the DOM (Document Object Model) from the root.
+   - **Relative XPath**: Generally offers better performance as it allows for more direct queries and doesn't necessarily traverse from the root.
+
+
+### Abosulte xpath
+
+/html/body/div[2]/div[2]/div/form/p/label
+
+### Relative xpath
+
+###Basic xpath
+1. Attribute based xpath
+   Syntax:
+   //tagname[@attribute='attributeValue']
+   Example:
+   //label[@for ='username']
+   //label[@for='password']
+
+2. Text based xpath
+   Syntax:
+   //tagname[text()='text value']
+   Example:
+   //h2[text()='Leaftaps Login']
+   //span[text()='Learn More']
+   //a[text()='Commerce Setup Assistant']
+
+3. Collection based xpath
+
+   Syntax:
+   (any xpath)[index] Index will starts from 1
+   Example:
+   (//span[@class=' label bBody'])[3]
+   (//span[text()='Get Started'])[2]
+
+4. Partial text based xpath
+
+   syntax: 
+   
+      //tagname[contains(text(),'partial text')]
+   Example:
+      //a[contains(text(),'Lightning E')]
+
+5. Partial Attribute based xpath
+
+   syntax:
+      //tagname[contains(@attributeName,'partial attribute value')]
+   Example:
+      //button[contains(@class,'ui-state-disabled')]
+
+
+###Advanced xpath
+1. Parent to Child 
+
+   Syntax: 
+
+   Xpath of Parent / tagName of the Child
+   Example:
+   //form[@name='j_idt89']/input
+
+2. Grand Parent to Grand Child
+
+   Syntax: 
+   xpath of Grand Parent // tagName of the grand child.
+   Example:
+   //form[@name='j_idt89']//span
+   //div[@class='condition-render-verticalFilters condition-render-boundary-top']//li
+   (//ul[@class='gender-list']//input)[4]
+
+3. Child to Parent
+
+   Syntax: 
+      xpath of child / parent:: tagname of the parent
+   Example:
+      //label[text()='Men']/parent::li
+      //label[text()='Men']/..
+
+4. Grand Child to  Grand Parent (Not Recommended/preffered)
+
+      Syntax : 
+      xpath of the Grand Child /ancestor:: tagname of the Grand Parent
+      Example:
+      //input[@value='men,men women']/ancestor::li
+      //input[@value='men,men women']/ancestor::ul
+      //input[@value='men,men women']/ancestor::div
+
+5. Elder Sibling to Younger Sibling
+
+      syntax: 
+      xpath of the elder sibling / following-sibling:: tagname of the younger sibliing
+      Example:
+      //input[@value='men,men women']/following-sibling::div
+      //span[text()='FILTERS']/following-sibling::span
+
+6. Younger sibling to Elder Sibling 
+      syntax:
+         xpath of the younger sibling / preceding -sibling :: tagname of the elder sibling
+      Example:
+         //span[text()='CLEAR ALL']/preceding-sibling::span
+         //ul[@class='brand-list']/preceding-sibling::span
+         //ul[@class='brand-list']/preceding-sibling::div
+
+7. Elder Cousin to Younger Cousin
+
+   syntax: 
+      xpath of elder cousin / following :: tagName of the younger cousin
+   Example:
+      //span[text()='Brand']/following::input[@placeholder='Search for Brand']
+
+8. Younger Cousin to Elder Cousin  (Not Recommended/preffered)
+
+   syntax: 
+    xpath of younger cousin / preceding:: tagname of the elder cousin
+   Example:
+    //input[@placeholder='Search for Brand']/preceding::span
+
+
+
+
+
+
+
+### Exceptions:
+### InvalidSelectorException
+1. **Definition**: 
+   - This exception occurs when the format of a given selector is incorrect or unsupported. 
+2. **Common Causes**:
+   - Syntax errors in the selector string.
+3. **Handling Tips**:
+   - Double-check the syntax of your selector.
+   
+
+### NoSuchElementException
+1. **Definition**: 
+     - This exception is thrown when an element could not be found on the page.
+     - It indicates that the search operation did not locate the element within the current webpage.
+2. **Common Causes**:
+     - The element does not exist on the page at the time of search.
+     - The selector used does not correctly identify the desired element.
+     - The element is not loaded yet due to web page's dynamic loading or delays.
+3. **Handling Tips**:
+   - Ensure the correctness of the selector.
+   - Use waits ( implicit) to allow time for the element to load.
+   
