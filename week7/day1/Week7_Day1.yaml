@@ -1,0 +1,37 @@
+#Execution flow for dependsOnMethod Attribute in TestNG
+--------------------------------------------------------
+1. Check for the lowest priority
+2. It look for dependsOnMethod
+3. Depended testcase will execute first (if already executed it will be ignored)
+4. If the depended testcase got failed the testcase will be skipped 
+5. If the depended testcase got pass it will execute the testcase
+6. By using alwaysRun = true (able to execute the testcase even the depended testcase got failed)execute the method
+
+
+
+#Steps to Design Framework by using POM
+---------------------------------------
+1. Create a package under src/main/java which are pages, testcases, base
+2. Under the pages package create a class for each webpage
+3. In the pages class create a method of each actions
+4. Add the return type for navigation in each methods
+5. Under base package create a class as ProjectSpecificMethod and declare preCondition() and postCondition() with TestNG Annotation @BeforeMethod and @AfterMethod
+6. Write Selenium script for each actions
+7. All the pages class should inherit ProjectSpecificMethod
+8. Create a testcase under the testcases package
+9. All the testcase class should inherit ProjectSpecificMethod
+
+
+
+#Classroom
+----------
+1. Create a new Project as Learn_POM
+2. Add the dependencies
+3. Create a 3 packages base, pages, testcases
+4. In base create a class ProjectSpecificMethod and declare preCondition() and postCondition()
+5. In pages package create a pages for LoginPage and WelcomePage
+6. Create a method for each action in the page and also add the return type 
+7. Create a testcase as TC_001_Login under testcases and design the execution flow
+8. Note: All the pages class and testcases should inherit PSM and driver should be gobal static
+
+
