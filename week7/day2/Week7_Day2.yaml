@@ -1,0 +1,51 @@
+#Static Keyword
+---------------
+1. by using static Keyword the referance for properties of the class(variable and method) will taken common referance for all the classes and objects
+2. It is possible to call/invoke the non-static and static properties into non-static methods
+3. It is not possible to call/ invoke the non-static properties into static method, static method only accept static properties
+4. static blocks always execute first only once and the non static execute when the object is created for a class(each time it will execute the non -static block)
+
+#Hierarichy
+----------
+1. Execute the static always first in super class and then sub class only once with or without create object for the class
+2. Next it will execute the non static blocks for super class and sub class for every constructor call
+3. method
+
+#this keyword
+-------------
+1. this keyword present same class/ current class constructor/methods/variables
+2. The usage of this keyword is to resolve the ambiguity in method level/ constructor level
+
+
+#super keyword
+--------------
+1. super keyword is used to access the super class properties(variable, method, constructor)
+2. to resolve ambiguity like same method / variable declared in super class and sub class, but like to access the super class variable in sub class
+
+
+#final keyword
+--------------
+1. If class is declared as final , Then the class can't be as super class
+2. If the variable is declared as final the value for the variable is not possible to change.
+3. If the method is declared as final then it is not possible to override
+
+
+#Steps to execute the testcase without static keyword (Parallel Execution)
+--------------------------------------------------------------------------
+1. Remove the static keyword for the driver variable in ProjectSpecificMethod
+2. In the testcase method Pass the driver value into the LoginPage constructor
+3. Do mouseHover and Create a constructor for Loginpage
+4. Inside the constructor assign local variable driver value to the global variable driver(this.driver = driver)
+5. pass driver variable value for the all the constructor for pages class and also assign the variable value inside the constructor
+
+
+#Steps to Handle MultiLingual Application by using POM
+------------------------------------------------------
+1. Create proprties files for each language
+2. In the properties file use the same key for all the properties file and assign values for the key based on the language.
+3. In the base class (ProjectSpecificMethod) Set the properties file location and load the properties file
+4. use prop.getProperty(String key) in required places in pages class
+
+
+
+
