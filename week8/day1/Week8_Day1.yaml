@@ -1,0 +1,36 @@
+#Steps to Create ExtentReport
+-----------------------------
+1. Add the required dependency
+2. Create a folder for report under the project
+3. Create a result.html (If not available)
+4. Create object for ExtentHtmlReporter and set the path of the result file
+5. Create object for ExtentReports 
+6. Attach the reporter(Report path) into the report
+7. Create a report for the testcase (provide testname and description)
+8. assign information to the testcase (Category, author)
+9. assign the status for each test steps(info, pass, fail)
+10. close the report
+
+#Steps to integrate Extent Report with testcase
+-----------------------------------------------
+@BS --> startReport
+    @BT --> assign information for report
+        @BC --> report information will implement
+            @DataProvider --> excel (Multi test data)
+                @BM --> precondition
+                    @T --> testcase
+                @AM -- > post condition
+        @AC --> NA
+    @AT --> NA
+@AS --> close the report
+
+1. Create a method as startReport in PSM( start the report and attach the report path) , use @BeforeSuite
+2. In PSM Decalre global String for testcaseName, testcaseDesc, authorName, categoryName 
+3. In each testcase class create a method as setData( assign values for testcaseName, testcaseDesc, authorName, categoryName), use @BeforeTest
+4. In PSM create a method as setReportDetails() where create report for testcase and assign the information, use @BeforeClass 
+5. In PSM create a method as takeSnap() where generate the randomNumber and take snap of the webpage
+6. In PSM create a method as reportStep(String status, String desc) where write the report status information(pass/fail) and in the screenshot path call/invoke the takeSnap()
+7. In pages class each testStep declare try and catch blocks. In try set status as pass for reportStep() and in catch block set the status as fail for reportStep()
+8. In PSM create a method as endReport() where close the report and use @AfterSuite 
+
+
