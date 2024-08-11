@@ -1,0 +1,22 @@
+#Steps to implement ThreadLocal for driver
+------------------------------------------
+1. Create private static final ThreadLocal for RemoteWebDriver 
+2. Create a setter and getter for driver (setDriver() and getDriver())
+3. In setDriver() set value for the driver (Eg- rd.set(new ChromeDriver()) )
+4. In getDriver() return the driver value (Eg- rd.get())
+5. In preCondition() call the setDriver() instance of driver = new ChromeDriver();
+6. Entrie project replace the driver with getDriver()
+
+#Steps to implement ThreadLocal for report
+-------------------------------------------
+1. Create 3 private static final ThreadLocal (2 for ExtentTest, 1 for String)
+2. Create setter and getter for all the 3 threadlocal (setTest(), getTest(), setNode(), getNode(), setTestname(), getTestname())
+3. In setTest() set the test value 
+4. In getTest() return the test value 
+5. By using getTest() assign the author and category and create node
+6. In setTestname() set the testcaseName value
+7. In getTestname() return the testcaseName value
+8. In setNode() create the node by getTest() and enter the testcaseName by getTestName()
+9. In getNode() return the node value
+10. setTest() and setTestName() should be invoked inside the @BeforeClass / setReportDetails()
+11. setNode() should be invoked inside the preCondition method

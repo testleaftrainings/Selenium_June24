@@ -1,0 +1,9 @@
+  How to setup the framework:
+---------------------------
+1. Navigate to https://github.com/testleaftrainings/makaia_framework
+2. Click on Code -> Download ZIP
+3. Extract the zip the file in your system
+4. Click on File -> Import... in eclipse
+5. Select Existing Maven project -> Next in the wizard
+6. Browse the extracted folder -> Select folder
+7. Click on Finish button in the wizard
